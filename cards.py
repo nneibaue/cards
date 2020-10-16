@@ -7,20 +7,25 @@ class UnassignedCardError(Exception):
 class Card:
     '''Class representing a single playing card'''
     def __init__(self, value, suit, deck=None):
-        '''Creates a card instance. Cards typically belong to a deck, but may be created outside of a deck.
+        '''Creates a card instance.
+
+        Cards can be created inside or outside of a Deck instance. A card's Deck is
+        reflected by the `deck` property, and can only be set upon instantiation.
         
         Args:
-            value: str. Value of the card. Valid values are stored in constants.VALUES, and are:
-                ['1', '2', '3', '4', '5', '6', '7', '8', '9' '10', 'J', 'Q', 'K', 'A']
-            suit: str. Suit of the card. Valid suits are stored in constants.SUITS, and are:
-                ['C', 'S', 'H', 'D']
+            value: str. Value of the card. Valid values are stored in constants.VALUES,
+            and are: ['1', '2', '3', '4', '5', '6', '7', '8', '9''10', 'J', 'Q', 'K', 'A']
+            suit: str. Suit of the card. Valid suits are stored in constants.SUITS,
+            and are: ['C', 'S', 'H', 'D']
             deck: Deck or None. Deck that the card belongs to'''
         
         if value not in constants.VALUES:
-            raise ValueError(f'"{value}" not a valid Card value! Valid Card values: {constants.VALUES}')
+            raise ValueError(f'"{value}" not a valid Card value!'
+                             f'Valid Card values: {constants.VALUES}')
 
         if suit not in constants.SUITS:
-            raise ValueError(f'"{suit}" not a valid suit! Valid suits: {constants.SUITS}')
+            raise ValueError(f'"{suit}" not a valid suit!'
+                             f'Valid suits: {constants.SUITS}')
 
         if value in constants.REDS:
             self.color = 'red'
@@ -38,7 +43,8 @@ class Card:
 
     @deck.setter
     def deck(self, _):
-        raise UnassignedCardError('Cannot assign a Deck! Decks are only assigned when Cards are created by a Deck instance')
+        raise UnassignedCardError('Cannot assign a Deck! Decks are only assigned when'
+                                  'Cards are created by a Deck instance')
     
             
     def __int__(self):
@@ -92,7 +98,8 @@ class Deck:
             include_jokers: bool. Whether to include exactly 2 jokers in the deck.
             shuffle: bool. Whether to perform an initial shuffle on the cards.
         '''
-        self.cards = [Card(value, suit, deck=self) for suit in constants.SUITS for value in constants.VALUES]
+        self.cards = [Card(value, suit, deck=self)
+                      for suit in constants.SUITS for value in constants.VALUES]
 
         if include_jokers:
             self.cards += [Joker(), Joker()]
