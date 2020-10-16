@@ -118,6 +118,7 @@ class TestDeck(unittest.TestCase):
         d.insert_card(c)
         self.assertEqual(d.size, 53)
 
+
     def test_insert_card_fails_if_not_a_card(self):
         d = cards.Deck()
 
@@ -125,10 +126,25 @@ class TestDeck(unittest.TestCase):
             d.insert_card(5)
 
             
-        
-        
-            
+    def test_add_card(self):
+        c = cards.Card('4', 'C')
+        d = cards.Deck()
+        d.add_card(c)
+        self.assertEqual(d.size, 53)
+        self.assertEqual(d.deal_card(), c)
 
+
+    def test_clear(self):
+        c1 = cards.Card('8', 'C')
+        c2 = cards.Card('K', 'C')
+        d = cards.Deck()
+        d.add_card(c1)
+        d.insert_card(c2)
+
+        extras = d.clear()
+        self.assertIn(c1, extras)
+        self.assertIn(c2, extras)
+        self.assertEqual(d.size, 52)
 
 if __name__ == '__main__':
     unittest.main()

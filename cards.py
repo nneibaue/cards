@@ -43,8 +43,8 @@ class Card:
 
     @deck.setter
     def deck(self, _):
-        raise UnassignedCardError('Cannot assign a Deck! Decks are only assigned when'
-                                  'Cards are created by a Deck instance')
+        raise UnassignedCardError('Cannot assign a Deck! Decks are only assigned during'
+                                  'instantiation')
     
             
     def __int__(self):
@@ -90,7 +90,11 @@ class Joker(Card):
         
 
 class Deck:
-    '''Class representing a standard deck of cards'''
+    '''Class representing a standard deck of cards.
+    
+    A Deck is responsible for creating 52 standard Cards (54 if a Joker is included).
+    Decks may, at any point, hold cards that belong to a different deck (e.g. during the
+    classic card game "War".'''
     def __init__(self, include_jokers=False, shuffle=True):
         '''Creates a standard deck of 52 (or 54) cards.
         
@@ -118,6 +122,22 @@ class Deck:
         '''Deals (returns) the top card of the deck.'''
 
         return self.cards.pop()
+
+
+    def clear(self):
+        '''Removes and returns all cards that do not belong to this deck.'''
+        cards_removed = []
+        for i, card in enumerate(self.cards):
+            if card.deck != self:
+                cards_removed.append(self.cards.pop(i))
+        return cards_removed
+                
+
+    def add_card(self, card):
+        '''Adds a card to the top of the deck.'''
+        if not isinstance(card, Card):
+            raise ValueError(f'{card} is not a Card!')
+        self.cards.append(card)
 
 
     def insert_card(self, card):
