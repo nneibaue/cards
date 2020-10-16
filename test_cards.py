@@ -86,6 +86,16 @@ class TestDeck(unittest.TestCase):
         d.shuffle()
         self.assertNotEqual(old, d.cards)
 
+        
+    def test_shuffle_after_dealing_10(self):
+        d = cards.Deck()
+        for _ in range(10):
+            d.deal_card()
+
+        d.shuffle()
+        self.assertEqual(42, d.size)
+            
+
 
     def test_shuffle_is_not_deterministic(self):
         decks = [cards.Deck(), cards.Deck(), cards.Deck()]
