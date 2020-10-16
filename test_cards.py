@@ -78,7 +78,9 @@ class TestDeck(unittest.TestCase):
 
     def test_deal_card(self):
         d = cards.Deck(include_jokers=False)
-        c = d.deal_card()
+        self.assertIsInstance(d.deal_card(), cards.Card)
+        self.assertEqual(d.size, 51)
+        
         
     def test_shuffle(self):
         d = cards.Deck()
