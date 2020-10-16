@@ -120,7 +120,9 @@ class Deck:
 
     def deal_card(self):
         '''Deals (returns) the top card of the deck.'''
-
+        if not self.cards:
+            print('Deck is empty!')
+            return
         return self.cards.pop()
 
 
