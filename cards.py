@@ -102,22 +102,30 @@ class Deck:
     def size(self):
         return len(self.cards)
 
+
+    def _random_index(self):
+        return randint(0, self.size - 1)
+
+
     def deal_card(self):
         '''Deals (returns) the top card of the deck.'''
+
         return self.cards.pop()
+
+
+    def insert_card(self, card):
+        '''Inserts a card at random into the deck.'''
+
+        if not isinstance(card, Card):
+            raise ValueError(f'{card} is not a Card!')
+        self.cards.insert(self._random_index(), card)
 
         
     def shuffle(self):
         '''Shuffles the deck'''
         remaining = self.size
-    
         new = []
-
         while remaining:
-            index = randint(0, remaining-1)
-            new.append(self.cards.pop(randint(0, remaining - 1)))
+            new.append(self.cards.pop(self._random_index()))
             remaining -= 1
-
         self.cards = new
-
-    

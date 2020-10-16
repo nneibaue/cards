@@ -112,6 +112,18 @@ class TestDeck(unittest.TestCase):
                 d.shuffle()
             check_decks()
 
+    def test_insert_card(self):
+        c = cards.Card('4', 'C')
+        d = cards.Deck()
+        d.insert_card(c)
+        self.assertEqual(d.size, 53)
+
+    def test_insert_card_fails_if_not_a_card(self):
+        d = cards.Deck()
+
+        with self.assertRaisesRegex(ValueError, 'not a Card'):
+            d.insert_card(5)
+
             
         
         
