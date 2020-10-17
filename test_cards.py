@@ -75,12 +75,17 @@ class TestDeck(unittest.TestCase):
         self.assertIsInstance(d, cards.Deck)
         self.assertEqual(constants.STANDARD_DECK_SIZE_WITH_JOKERS, len(d.cards))
 
-
     def test_deal_card(self):
-        d = cards.Deck(include_jokers=False)
+        d = cards.Deck()
         self.assertIsInstance(d.deal_card(), cards.Card)
         self.assertEqual(d.size, 51)
         
+    def test_deal_card_from_empty_deck(self):
+        d = cards.Deck()
+
+        # Try dealing 55 cards
+        for _ in range(55):
+            d.deal_card()
         
     def test_shuffle(self):
         d = cards.Deck()
