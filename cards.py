@@ -113,6 +113,11 @@ class Deck:
     def size(self):
         return len(self.cards)
 
+    @property
+    def top_card(self):
+        '''Look at the top card without dealing it.'''
+        return self.cards[-1]
+
 
     def _random_index(self):
         return randint(0, self.size - 1)

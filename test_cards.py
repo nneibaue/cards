@@ -12,7 +12,7 @@ class TestCard(unittest.TestCase):
 
     def test_instatiation_from_deck(self):
         d = cards.Deck()
-        c = d.cards[0]
+        c = d.top_card
         self.assertIsInstance(c.deck, cards.Deck)
         self.assertEqual(c.deck, d)
 
