@@ -44,6 +44,10 @@ class TestCard(unittest.TestCase):
         c = cards.Card('4', 'S')
         self.assertEqual(str(c), '4 of spades')
 
+    def test_id(self):
+        c = cards.Card('7', 'H')
+        self.assertEqual(c.id, '7H')
+            
 
 class TestJoker(unittest.TestCase):
 

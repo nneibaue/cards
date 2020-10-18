@@ -38,6 +38,10 @@ class Card:
         self._deck = deck
 
     @property
+    def id(self):
+        return f'{self.value}{self.suit}'
+
+    @property
     def deck(self):
         return self._deck
 
@@ -78,6 +82,9 @@ class Joker(Card):
     def __init__(self):
         '''Create a Joker instance. This takes no arguments'''
         pass
+
+    def id(self):
+        return 'Joker'
 
     def __int__(self):
         raise ValueError('Jokers do not have a numeric value!')
