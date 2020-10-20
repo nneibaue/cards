@@ -2,6 +2,7 @@ import unittest
 import cards
 import constants
 
+
 class TestCard(unittest.TestCase):
     
     def test_instantiation_no_deck(self):
@@ -9,37 +10,31 @@ class TestCard(unittest.TestCase):
         self.assertIsInstance(c, cards.Card)
         self.assertEqual(c.deck, None)
 
-
     def test_instatiation_from_deck(self):
         d = cards.Deck()
         c = d.top_card
         self.assertIsInstance(c.deck, cards.Deck)
         self.assertEqual(c.deck, d)
 
-
     def test_setting_deck_raises_exception(self):
         c = cards.Card('4', 'D')
         with self.assertRaises(cards.UnassignedCardError):
             c.deck = cards.Deck()
-
 
     def test_invalid_value(self):
         with self.assertRaisesRegex(ValueError,
                                      'not a valid Card value'):
             c = cards.Card('12', 'D')
 
-
     def test_invalid_suit(self):
         with self.assertRaisesRegex(ValueError,
                                     'not a valid suit'):
             c = cards.Card('8', 'Hearts')
 
-
     def test_cast_to_int(self):
         c = cards.Card('Q', 'D')
         self.assertEqual(12, int(c))
 
-    
     def test_str(self):
         c = cards.Card('4', 'S')
         self.assertEqual(str(c), '4 of spades')
@@ -59,11 +54,9 @@ class TestJoker(unittest.TestCase):
     def setUp(self):
         self.j = cards.Joker()
 
-
     def test_instantiation(self):
         self.assertIsInstance(self.j, cards.Card)
         self.assertIsInstance(self.j, cards.Joker)
-
 
     def test_cast_to_int_raises_exception(self):
         with self.assertRaisesRegex(ValueError,
@@ -71,7 +64,6 @@ class TestJoker(unittest.TestCase):
             int(self.j)
                                 
 
-        
 class TestDeck(unittest.TestCase):
     
     def test_instantiation_no_jokers(self):
@@ -102,7 +94,6 @@ class TestDeck(unittest.TestCase):
         d.shuffle()
         self.assertNotEqual(old, d.cards)
 
-        
     def test_shuffle_after_dealing_10(self):
         d = cards.Deck()
         for _ in range(10):
@@ -111,8 +102,6 @@ class TestDeck(unittest.TestCase):
         d.shuffle()
         self.assertEqual(42, d.size)
             
-
-
     def test_shuffle_is_not_deterministic(self):
         decks = [cards.Deck(), cards.Deck(), cards.Deck()]
         
@@ -134,21 +123,18 @@ class TestDeck(unittest.TestCase):
         d.insert_card(c)
         self.assertEqual(d.size, 53)
 
-
     def test_insert_card_fails_if_not_a_card(self):
         d = cards.Deck()
 
         with self.assertRaisesRegex(ValueError, 'not a Card'):
             d.insert_card(5)
 
-            
     def test_add_card(self):
         c = cards.Card('4', 'C')
         d = cards.Deck()
         d.add_card(c)
         self.assertEqual(d.size, 53)
         self.assertEqual(d.deal_card(), c)
-
 
     def test_clear(self):
         c1 = cards.Card('8', 'C')

@@ -1,13 +1,16 @@
-import constants
 from random import randint
+import constants
+
 
 class UnassignedCardError(Exception):
     '''Raised when trying to assign a Card's Deck post-instantiation.'''
     pass
 
+
 class DuplicateCardError(Exception):
     '''Raised when trying to assign a Card's Deck to a Deck that alread has one of this card.'''
     pass
+
 
 class Card:
     '''Class representing a single playing card'''
@@ -28,7 +31,7 @@ class Card:
             suit: str. Suit of the card. Valid suits are stored in constants.SUITS,
                 and are: ['C', 'S', 'H', 'D']
             deck: Deck or None. Deck that the card belongs to'''
-        
+
         if value not in constants.VALUES:
             raise ValueError(f'"{value}" not a valid Card value!'
                              f'Valid Card values: {constants.VALUES}')
@@ -44,7 +47,7 @@ class Card:
 
         self.value = value
         self.suit = suit
-        
+
         # Check all cards to avoid duplicating cards in a Deck
         if deck is not None:
             for card in Card._cards_in_existance:
@@ -70,7 +73,6 @@ class Card:
         raise UnassignedCardError('Cannot assign a Deck! Decks are only assigned during'
                                   'instantiation')
     
-            
     def __int__(self):
         '''Returns the numeric card value'''
         if self.value == 'A':
@@ -81,7 +83,6 @@ class Card:
         else:
             return 2 + constants.VALUES.index(self.value)
             
-
     def __add__(self, other):
         '''Adds two cards or a card to an integer'''
         return int(self) + int(other)
@@ -140,22 +141,18 @@ class Deck:
         if include_jokers:
             self.cards += [Joker(), Joker()]
 
-
     @property
     def size(self):
         '''Returns the current size of the Deck, including any foreign cards.'''
         return len(self.cards)
-
 
     @property
     def top_card(self):
         '''Look at the top card without dealing it.'''
         return self.cards[-1]
 
-
     def _random_index(self):
         return randint(0, self.size - 1)
-
 
     def deal_card(self):
         '''Deals (returns) the top card of the deck.'''
@@ -163,7 +160,6 @@ class Deck:
             print('Deck is empty!')
             return
         return self.cards.pop()
-
 
     def clear(self):
         '''Removes and returns all cards that do not belong to this deck.'''
@@ -173,13 +169,11 @@ class Deck:
                 cards_removed.append(self.cards.pop(i))
         return cards_removed
 
-
     def add_card(self, card):
         '''Adds a card to the top of the deck.'''
         if not isinstance(card, Card):
             raise ValueError(f'{card} is not a Card!')
         self.cards.append(card)
-
 
     def insert_card(self, card):
         '''Inserts a card at random into the deck.'''
@@ -187,7 +181,6 @@ class Deck:
         if not isinstance(card, Card):
             raise ValueError(f'{card} is not a Card!')
         self.cards.insert(self._random_index(), card)
-
         
     def shuffle(self):
         '''Shuffles the deck'''
