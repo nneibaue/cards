@@ -57,10 +57,12 @@ class Card:
 
     @property
     def id(self):
+        '''Returns this Card's id, e.g. '4H' (four of hearts).'''
         return f'{self.value}{self.suit}'
 
     @property
     def deck(self):
+        '''Returns this Card's Deck instance, if any.'''
         return self._deck
 
     @deck.setter
@@ -141,6 +143,7 @@ class Deck:
 
     @property
     def size(self):
+        '''Returns the current size of the Deck, including any foreign cards.'''
         return len(self.cards)
 
 
