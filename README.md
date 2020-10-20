@@ -18,7 +18,7 @@ To clone this repo, simply copy and paste the following into your terminal windo
 
     git clone https://github.com/nneibaue/cards
 
-At this point, this library requires no external dependencies; however, it is recommended to work within a virtual environment. To set this up, paste the following commands into your terminal:
+At this point, this library requires no external libraries; however, it is still recommended to work within a virtual environment. To set this up, paste the following commands into your terminal:
 
     python3 -venv env
     source env/bin/activate
@@ -69,7 +69,7 @@ Cards are typically created by Decks, but may be created on their own:
     >>>import cards
 
     >>>four_of_hearts = cards.Card('4', 'H', deck=None)
-    >>>king_of_spaces = cards.Card('K', 'S', deck=None)
+    >>>king_of_spades = cards.Card('K', 'S', deck=None)
 
 The `deck=None` argument specifies a Deck instance to assign a Card to. This argument is used by a Deck when creating cards and **should not be used** if creating standalone cards. 
 
@@ -124,8 +124,7 @@ Decks, at any point, may contain _any_ number of cards from _any_ Deck. This wil
     >>>black_deck.size
     >>>53
 
-    # The black deck's top card is still 
-    # assigned to the red deck
+    # The black deck's top card is still assigned to the red deck
     >>>black_deck.top_card.deck == red_deck
     >>>True
 
