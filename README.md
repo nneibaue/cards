@@ -69,7 +69,7 @@ Cards are typically created by Decks, but may be created on their own:
     >>>import cards
 
     >>>four_of_hearts = cards.Card('4', 'H', deck=None)
-    >>>king_of_spaces = cards.Card('K', 'S', deck=None)
+    >>>king_of_spades = cards.Card('K', 'S', deck=None)
 
 The `deck=None` argument specifies a Deck instance to assign a Card to. This argument is used by a Deck when creating cards and **should not be used** if creating standalone cards. 
 
