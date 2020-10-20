@@ -18,7 +18,7 @@ To clone this repo, simply copy and paste the following into your terminal windo
 
     git clone https://github.com/nneibaue/cards
 
-At this point, this library requires no external dependencies; however, it is recommended to work within a virtual environment. To set this up, paste the following commands into your terminal:
+At this point, this library requires no external libraries; however, it is still recommended to work within a virtual environment. To set this up, paste the following commands into your terminal:
 
     python3 -venv env
     source env/bin/activate
