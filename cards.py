@@ -186,6 +186,7 @@ class Deck:
         
     def shuffle(self):
         '''Shuffles the deck'''
+        random.seed(time.time())
         remaining = self.size
         new = []
         while remaining:
