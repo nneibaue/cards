@@ -124,8 +124,7 @@ Decks, at any point, may contain _any_ number of cards from _any_ Deck. This wil
     >>>black_deck.size
     >>>53
 
-    # The black deck's top card is still 
-    # assigned to the red deck
+    # The black deck's top card is still assigned to the red deck
     >>>black_deck.top_card.deck == red_deck
     >>>True
 
