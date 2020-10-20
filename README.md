@@ -1,7 +1,7 @@
 # Cards
-Simple library for simulating a deck of cards.
+<h3>Simple library for simulating a deck of cards.</h3>
 
-
+<br>
 
 ## What's included?
 - Deck object
@@ -11,7 +11,7 @@ Simple library for simulating a deck of cards.
 <br>
 
 ## Installation
----
+
 **This library uses Python 3.7+**
 
 To clone this repo, simply copy and paste the following into your terminal window
@@ -30,8 +30,14 @@ If you do not have `virtualenv` installed, it can be installed using the system 
 
 <br>
 
+## Testing
+
+All tests are found in test_cards.py. They can be run by executing test_cards.py in the terminal.
+
+<br>
+
 ## How to use:
----
+
 ### Deck
 The simplest way to get started is to create a Deck instance:
     
@@ -126,11 +132,11 @@ Decks, at any point, may contain _any_ number of cards from _any_ Deck. This wil
 <br>
 
 ## Other Notes
----
 
-- Aces can be set globally as high or low by modifying the `ACE_HIGH` variable in constants.py
 
-- Convenient human-readable names are stored in the `NAMES` variable in constants.py
+- Aces can be set globally as high or low by modifying the `ACE_HIGH` bool in constants.py
+
+- Convenient human-readable names are stored in the `NAMES` dict in constants.py
 
 - Card images (as well as some deck backs) can be found in the images/ directory. These are not currently used, but may be helpful if creating playing-card based GUIs using this library. Future updates of this library will add modular PyQt5 elements for easy game creation.
 
