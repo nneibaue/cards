@@ -30,6 +30,12 @@ If you do not have `virtualenv` installed, it can be installed using the system 
 
 <br>
 
+## Testing
+---
+All tests are found in test_cards.py. They can be run by executing test_cards.py in the terminal.
+
+<br>
+
 ## How to use:
 ---
 ### Deck
