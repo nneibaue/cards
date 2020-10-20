@@ -1,4 +1,5 @@
-from random import randint
+import random
+import time
 import constants
 
 
@@ -152,7 +153,8 @@ class Deck:
         return self.cards[-1]
 
     def _random_index(self):
-        return randint(0, self.size - 1)
+        random.seed(time.time())
+        return random.randint(0, self.size - 1)
 
     def deal_card(self):
         '''Deals (returns) the top card of the deck.'''
