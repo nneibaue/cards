@@ -11,7 +11,7 @@ Simple library for simulating a deck of cards.
 <br>
 
 ## Installation
----
+
 **This library uses Python 3.7+**
 
 To clone this repo, simply copy and paste the following into your terminal window
