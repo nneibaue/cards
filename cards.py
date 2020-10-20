@@ -2,9 +2,11 @@ import constants
 from random import randint
 
 class UnassignedCardError(Exception):
+    '''Raised when trying to assign a Card's Deck post-instantiation.'''
     pass
 
 class DuplicateCardError(Exception):
+    '''Raised when trying to assign a Card's Deck to a Deck that alread has one of this card.'''
     pass
 
 class Card:
