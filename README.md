@@ -1,7 +1,7 @@
 # Cards
-Simple library for simulating a deck of cards.
+<h3>Simple library for simulating a deck of cards.</h3>
 
-
+<br>
 
 ## What's included?
 - Deck object
