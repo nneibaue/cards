@@ -4,8 +4,16 @@ from random import randint
 class UnassignedCardError(Exception):
     pass
 
+class DuplicateCardError(Exception):
+    pass
+
 class Card:
     '''Class representing a single playing card'''
+
+    # Ledger of all cards in memory. This ensures that no duplicate cards are added
+    # to any Decks
+    _cards_in_existance = []
+
     def __init__(self, value, suit, deck=None):
         '''Creates a card instance.
 
@@ -35,7 +43,15 @@ class Card:
         self.value = value
         self.suit = suit
         
+        # Check all cards to avoid duplicating cards in a Deck
+        if deck is not None:
+            for card in Card._cards_in_existance:
+                if self.id == card.id and deck == card.deck:
+                        raise DuplicateCardError(f'An instance of {self.id} has already'
+                                                 f'been assigned to this Deck!')
+
         self._deck = deck
+        Card._cards_in_existance.append(self)
 
     @property
     def id(self):

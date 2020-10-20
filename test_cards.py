@@ -47,6 +47,11 @@ class TestCard(unittest.TestCase):
     def test_id(self):
         c = cards.Card('7', 'H')
         self.assertEqual(c.id, '7H')
+        
+    def test_duplicate_card_in_deck_raises_exception(self):
+        d = cards.Deck()
+        with self.assertRaises(cards.DuplicateCardError):
+            c = cards.Card('4', 'C', deck=d)
             
 
 class TestJoker(unittest.TestCase):
@@ -156,6 +161,7 @@ class TestDeck(unittest.TestCase):
         self.assertIn(c1, extras)
         self.assertIn(c2, extras)
         self.assertEqual(d.size, 52)
+
 
 if __name__ == '__main__':
     unittest.main()
