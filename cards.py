@@ -24,9 +24,9 @@ class Card:
         
         Args:
             value: str. Value of the card. Valid values are stored in constants.VALUES,
-            and are: ['1', '2', '3', '4', '5', '6', '7', '8', '9''10', 'J', 'Q', 'K', 'A']
+                and are: ['1', '2', '3', '4', '5', '6', '7', '8', '9''10', 'J', 'Q', 'K', 'A']
             suit: str. Suit of the card. Valid suits are stored in constants.SUITS,
-            and are: ['C', 'S', 'H', 'D']
+                and are: ['C', 'S', 'H', 'D']
             deck: Deck or None. Deck that the card belongs to'''
         
         if value not in constants.VALUES:
