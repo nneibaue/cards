@@ -31,13 +31,13 @@ If you do not have `virtualenv` installed, it can be installed using the system 
 <br>
 
 ## Testing
----
+
 All tests are found in test_cards.py. They can be run by executing test_cards.py in the terminal.
 
 <br>
 
 ## How to use:
----
+
 ### Deck
 The simplest way to get started is to create a Deck instance:
     
@@ -132,7 +132,7 @@ Decks, at any point, may contain _any_ number of cards from _any_ Deck. This wil
 <br>
 
 ## Other Notes
----
+
 
 - Aces can be set globally as high or low by modifying the `ACE_HIGH` bool in constants.py
 
