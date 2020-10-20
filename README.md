@@ -128,9 +128,9 @@ Decks, at any point, may contain _any_ number of cards from _any_ Deck. This wil
 ## Other Notes
 ---
 
-- Aces can be set globally as high or low by modifying the `ACE_HIGH` variable in constants.py
+- Aces can be set globally as high or low by modifying the `ACE_HIGH` bool in constants.py
 
-- Convenient human-readable names are stored in the `NAMES` variable in constants.py
+- Convenient human-readable names are stored in the `NAMES` dict in constants.py
 
 - Card images (as well as some deck backs) can be found in the images/ directory. These are not currently used, but may be helpful if creating playing-card based GUIs using this library. Future updates of this library will add modular PyQt5 elements for easy game creation.
 
