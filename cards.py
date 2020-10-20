@@ -101,7 +101,12 @@ class Deck:
     
     A Deck is responsible for creating 52 standard Cards (54 if a Joker is included).
     Decks may, at any point, hold cards that belong to a different deck (e.g. during the
-    classic card game "War".'''
+    classic card game "War".
+    
+    The user is responsible for all cards dealt from the deck. If a card is dealt, but 
+    not captured, then the card is lost and the Deck must be re-instantiated to
+    "recover" the lost card.'''
+    
     def __init__(self, include_jokers=False, shuffle=True):
         '''Creates a standard deck of 52 (or 54) cards.
         
@@ -119,6 +124,7 @@ class Deck:
     @property
     def size(self):
         return len(self.cards)
+
 
     @property
     def top_card(self):
@@ -145,7 +151,7 @@ class Deck:
             if card.deck != self:
                 cards_removed.append(self.cards.pop(i))
         return cards_removed
-                
+
 
     def add_card(self, card):
         '''Adds a card to the top of the deck.'''
@@ -170,3 +176,6 @@ class Deck:
             new.append(self.cards.pop(self._random_index()))
             remaining -= 1
         self.cards = new
+
+    def __repr__(self):
+        return f'Deck(size={self.size})'
