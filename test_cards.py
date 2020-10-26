@@ -62,6 +62,16 @@ class TestJoker(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,
                                     'Jokers do not have a numeric value'):
             int(self.j)
+
+    def test_instantiation_from_deck(self):
+        d = cards.Deck(include_jokers=True)
+        jokers = []
+
+        #Find jokers and check the deck property
+        for card in d.cards:
+            if card.id == 'Joker':
+                self.assertEqual(card.deck, d)
+
                                 
 
 class TestDeck(unittest.TestCase):

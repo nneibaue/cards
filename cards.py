@@ -101,9 +101,9 @@ class Card:
 
 
 class Joker(Card):
-    def __init__(self):
+    def __init__(self, deck=None):
         '''Create a Joker instance. This takes no arguments'''
-        pass
+        self._deck = deck
 
     def id(self):
         return 'Joker'
